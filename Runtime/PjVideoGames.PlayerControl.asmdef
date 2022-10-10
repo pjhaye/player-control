@@ -1,5 +1,5 @@
 {
-    "name": "pjvideogames.playercontrol.runtime",
+    "name": "PjVideoGames.PlayerControl",
     "rootNamespace": "PlayerControl",
     "references": [],
     "includePlatforms": [],
