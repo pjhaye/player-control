@@ -1,6 +1,6 @@
 {
   "name": "com.pjvideogames.playercontrol",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "displayName": "Player Control",
   "description": "Grants the ability possess objects for player control. Heavily reliant upon Rewired",
   "unity": "2021.1",

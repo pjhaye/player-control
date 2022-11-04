@@ -18,6 +18,7 @@ namespace PlayerControl
         private List<AxisInputBinding> _axisInputBindings;
         private List<Axis2dInputBinding> _axis2dInputBindings;
         private List<ButtonDownInputBinding> _buttonDownInputBindings;
+        private List<ButtonDownInputBinding> _buttonRepeatInputBindings;
         private List<ButtonUpInputBinding> _buttonUpInputBindings;
         private List<ButtonInputBinding> _buttonInputBindings;
 
@@ -91,6 +92,7 @@ namespace PlayerControl
             ProcessAxis2dInputs();
             ProcessButtonInputs();
             ProcessButtonDownInputs();
+            ProcessButtonRepeatInputs();
             ProcessButtonUpInputs();
         }
 
@@ -112,6 +114,17 @@ namespace PlayerControl
                 if (_player.GetButtonDown(buttonDownInputBinding.ButtonName))
                 {
                     buttonDownInputBinding.Handler?.Invoke();
+                }
+            }
+        }
+        
+        private void ProcessButtonRepeatInputs()
+        {
+            foreach (var buttonRepeatInputBinding in _buttonRepeatInputBindings)
+            {
+                if (_player.GetButtonRepeating(buttonRepeatInputBinding.ButtonName))
+                {
+                    buttonRepeatInputBinding.Handler?.Invoke();
                 }
             }
         }
@@ -179,6 +192,15 @@ namespace PlayerControl
             });
         }
         
+        public void AddButtonRepeatInputHandler(string buttonName, ButtonDownInputHandler buttonRepeatInputHandler)
+        {
+            _buttonRepeatInputBindings.Add(new ButtonDownInputBinding()
+            {
+                ButtonName = buttonName,
+                Handler = buttonRepeatInputHandler 
+            });
+        }
+        
         public void AddButtonUpInputHandler(string buttonName, ButtonUpInputHandler buttonUpInputHandler)
         {
             _buttonUpInputBindings.Add(new ButtonUpInputBinding()
@@ -213,6 +235,7 @@ namespace PlayerControl
             _axis2dInputBindings.Clear();
             _buttonUpInputBindings.Clear();
             _buttonDownInputBindings.Clear();
+            _buttonRepeatInputBindings.Clear();
             _buttonInputBindings.Clear();
         }
 
