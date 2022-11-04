@@ -67,6 +67,7 @@ namespace PlayerControl
             _axisInputBindings = new List<AxisInputBinding>();
             _axis2dInputBindings = new List<Axis2dInputBinding>();
             _buttonDownInputBindings = new List<ButtonDownInputBinding>();
+            _buttonRepeatInputBindings = new List<ButtonDownInputBinding>();
             _buttonUpInputBindings = new List<ButtonUpInputBinding>();
             _buttonInputBindings = new List<ButtonInputBinding>();
         }
