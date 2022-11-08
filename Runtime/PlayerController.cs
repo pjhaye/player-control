@@ -99,8 +99,9 @@ namespace PlayerControl
 
         private void ProcessButtonUpInputs()
         {
-            foreach (var buttonUpInputBinding in _buttonUpInputBindings)
+            for (var i = _buttonUpInputBindings.Count - 1; i >= 0; i--)
             {
+                var buttonUpInputBinding = _buttonUpInputBindings[i];
                 if (_player.GetButtonUp(buttonUpInputBinding.ButtonName))
                 {
                     buttonUpInputBinding.Handler?.Invoke();
@@ -110,8 +111,9 @@ namespace PlayerControl
 
         private void ProcessButtonDownInputs()
         {
-            foreach (var buttonDownInputBinding in _buttonDownInputBindings)
+            for (var i = _buttonDownInputBindings.Count - 1; i >= 0; i--)
             {
+                var buttonDownInputBinding = _buttonDownInputBindings[i];
                 if (_player.GetButtonDown(buttonDownInputBinding.ButtonName))
                 {
                     buttonDownInputBinding.Handler?.Invoke();
@@ -121,8 +123,9 @@ namespace PlayerControl
         
         private void ProcessButtonRepeatInputs()
         {
-            foreach (var buttonRepeatInputBinding in _buttonRepeatInputBindings)
+            for (var i = _buttonRepeatInputBindings.Count - 1; i >= 0; i--)
             {
+                var buttonRepeatInputBinding = _buttonRepeatInputBindings[i];
                 if (_player.GetButtonRepeating(buttonRepeatInputBinding.ButtonName))
                 {
                     buttonRepeatInputBinding.Handler?.Invoke();
@@ -132,8 +135,9 @@ namespace PlayerControl
 
         private void ProcessButtonInputs()
         {
-            foreach (var buttonInputBinding in _buttonInputBindings)
+            for (var i = _buttonInputBindings.Count - 1; i >= 0; i--)
             {
+                var buttonInputBinding = _buttonInputBindings[i];
                 if (_player.GetButton(buttonInputBinding.ButtonName))
                 {
                     buttonInputBinding.Handler?.Invoke();
@@ -143,8 +147,9 @@ namespace PlayerControl
 
         private void ProcessAxisInputs()
         {
-            foreach (var axisInputBinding in _axisInputBindings)
+            for (var i = _axisInputBindings.Count - 1; i >= 0; i--)
             {
+                var axisInputBinding = _axisInputBindings[i];
                 var value = _player.GetAxis(axisInputBinding.AxisName);
                 if (Mathf.Abs(value) > float.Epsilon)
                 {
@@ -155,8 +160,9 @@ namespace PlayerControl
         
         private void ProcessAxis2dInputs()
         {
-            foreach (var axis2dInputBinding in _axis2dInputBindings)
+            for (var i = _axis2dInputBindings.Count - 1; i >= 0; i--)
             {
+                var axis2dInputBinding = _axis2dInputBindings[i];
                 var axis2d = _player.GetAxis2D(axis2dInputBinding.AxisXName, axis2dInputBinding.AxisYName);
                 if (axis2d.sqrMagnitude > 0.0f)
                 {
